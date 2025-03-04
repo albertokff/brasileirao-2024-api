@@ -52,7 +52,7 @@ export const getClubByIdRepository = async (id: number) => {
 }
 
 export const setNewClubByIdRepository = async (club: clubModel) => {
-    if (Object.keys(club).length > 0) {
+    if (Object.keys(club).length > 1) {
         database.push(club)
         return {
             message: "Clube cadastrado com sucesso!"
@@ -60,4 +60,17 @@ export const setNewClubByIdRepository = async (club: clubModel) => {
     } else {
         return false
     }
+}
+
+export const deleteClubByIdRepository = async (id: number) => {
+    const index = database.findIndex( club => club.id === id)
+
+    if (index !== -1) {
+        database.splice(index, 1)
+        return {
+            message: "Deletado com sucesso!"
+        }
+    }
+
+    return false
 }

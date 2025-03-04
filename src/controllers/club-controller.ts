@@ -18,3 +18,9 @@ export const setNewClub = async (req: Request, res: Response) => {
     const data = await service.setNewClubService(body)
     res.status(data.statusCode).json(data.body)
 }
+
+export const deleteClubById = async (req: Request, res: Response) => {
+    const id = parseInt(req.params.id)
+    const data = await service.deleteClubById(id)
+    res.status(data.statusCode).json(data.body)
+}

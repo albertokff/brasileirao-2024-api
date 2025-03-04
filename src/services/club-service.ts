@@ -17,3 +17,8 @@ export const setNewClubService = async (club: clubModel) => {
     return data ? await httpResponse.ok(data) : await httpResponse.badRequest()
 }
 
+export const deleteClubById = async (id: number) => {
+    const data = await repository.deleteClubByIdRepository(id)
+    return data ? await httpResponse.ok(data) : await httpResponse.badRequest()
+}
+

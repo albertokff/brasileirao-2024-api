@@ -12,5 +12,6 @@ router.patch("/player/:id", playerController.updatePlayerById)
 router.get("/club", clubController.getAllClubs)
 router.get("/club/:id", clubController.getClubById)
 router.post("/club", clubController.setNewClub)
+router.delete("/club/:id", clubController.deleteClubById)
 
 export default router
