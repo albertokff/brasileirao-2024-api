@@ -1,4 +1,5 @@
 import { clubModel } from "../models/club-model";
+import { nameClubModel } from "../models/name-club-model";
 
 const database: clubModel[] = [
     {
@@ -63,7 +64,7 @@ export const setNewClubByIdRepository = async (club: clubModel) => {
 }
 
 export const deleteClubByIdRepository = async (id: number) => {
-    const index = database.findIndex( club => club.id === id)
+    const index = database.findIndex( club => club.id === id )
 
     if (index !== -1) {
         database.splice(index, 1)
@@ -74,3 +75,16 @@ export const deleteClubByIdRepository = async (id: number) => {
 
     return false
 }
+
+export const updateClubByIdRepository = async (id: number, name: clubModel) => {
+    const index = database.findIndex( club => club.id === id )
+
+    if (index !== -1) {
+        database[index] = name
+        return {
+            message: "Clube editado com sucesso!"
+        }
+    }
+
+    return false
+} 

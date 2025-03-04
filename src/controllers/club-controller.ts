@@ -1,6 +1,5 @@
 import { Request, Response } from "express"
 import * as service from "../services/club-service"
-import { playerModel } from "../models/player-model"
 
 export const getAllClubs = async (req: Request, res: Response) => {
     const data = await service.getAllClubsService()
@@ -22,5 +21,12 @@ export const setNewClub = async (req: Request, res: Response) => {
 export const deleteClubById = async (req: Request, res: Response) => {
     const id = parseInt(req.params.id)
     const data = await service.deleteClubById(id)
+    res.status(data.statusCode).json(data.body)
+}
+
+export const updateClubById = async (req: Request, res: Response) => {
+    const id = parseInt(req.params.id)
+    const body = req.body
+    const data = await service.updateClubById(id, body)
     res.status(data.statusCode).json(data.body)
 }

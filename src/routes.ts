@@ -13,5 +13,6 @@ router.get("/club", clubController.getAllClubs)
 router.get("/club/:id", clubController.getClubById)
 router.post("/club", clubController.setNewClub)
 router.delete("/club/:id", clubController.deleteClubById)
+router.patch("/club/:id", clubController.updateClubById)
 
 export default router

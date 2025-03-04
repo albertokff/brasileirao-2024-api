@@ -22,3 +22,8 @@ export const deleteClubById = async (id: number) => {
     return data ? await httpResponse.ok(data) : await httpResponse.badRequest()
 }
 
+export const updateClubById = async (id: number, body: clubModel) => {
+    const data = await repository.updateClubByIdRepository(id, body)
+    return data ? await httpResponse.ok(data) : await httpResponse.badRequest()
+}
+
