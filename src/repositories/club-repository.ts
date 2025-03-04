@@ -48,5 +48,16 @@ export const getAllClubsRepository = async (): Promise<clubModel[] | undefined> 
 }
 
 export const getClubByIdRepository = async (id: number) => {
-    return database.find( player => player.id === id)
+    return database.find( club => club.id === id)
+}
+
+export const setNewClubByIdRepository = async (club: clubModel) => {
+    if (Object.keys(club).length > 0) {
+        database.push(club)
+        return {
+            message: "Clube cadastrado com sucesso!"
+        }
+    } else {
+        return false
+    }
 }
