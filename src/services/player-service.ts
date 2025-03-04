@@ -40,3 +40,16 @@ export const setNewPlayerService = async (player: playerModel) => {
 
     return response
 }
+
+export const deletePlayerByIdService = async (id: number) => {
+    const data = await repository.deletePlayerByIdRepository(id)
+    let response = null
+
+    if (data) {
+        response = await httpResponse.ok(data)
+    } else {
+        response = await httpResponse.badRequest()
+    }
+
+    return response
+}

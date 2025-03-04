@@ -155,3 +155,16 @@ export const getPlayerByIdRepository = async(id: number): Promise<playerModel | 
 export const setNewPlayerRepository = async(player: playerModel) => {
     return database.push(player)
 }
+
+export const deletePlayerByIdRepository = async (id: number) => {
+    const index = database.findIndex( player => player.id === id)
+
+    if (index !== -1) {
+        database.splice(index, 1)
+        return {
+            message: "Deletado com sucesso!"
+        }
+    }
+
+    return false
+}

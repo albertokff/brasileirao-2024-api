@@ -17,3 +17,9 @@ export const setNewPlayer = async (req: Request, res: Response) => {
     const data = await service.setNewPlayerService(body)
     res.status(data.statusCode).json(data.body)
 }
+
+export const deletePlayerById = async (req: Request, res: Response) => {
+    const id = parseInt(req.params.id)
+    const data = await service.deletePlayerByIdService(id)
+    res.status(data.statusCode).json(data.body)
+}
