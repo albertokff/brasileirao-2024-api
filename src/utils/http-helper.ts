@@ -11,3 +11,19 @@ export const noContent = async(): Promise<httpResponse> => {
         body: null
     }
 }
+
+export const created = async(): Promise<httpResponse> => {
+    return {
+        statusCode: 201,
+        body: {
+            message: "successful"
+        }
+    }
+}
+
+export const badRequest = async(): Promise<httpResponse> => {
+    return {
+        statusCode: 400,
+        body: null
+    }
+}

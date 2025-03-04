@@ -3,13 +3,39 @@ import * as repository from "../repositories/player-repository"
 import * as httpResponse from "../utils/http-helper"
 
 export const getPlayerService = async() => {
-    const data = await repository.getAllPlayers()
+    const data = await repository.getAllPlayersRepository()
     let response = null
 
     if (data) {
         response = await httpResponse.ok(data)
     } else {
         response = await httpResponse.noContent()
+    }
+
+    return response
+}
+
+export const getPlayerByIdService = async(id: number) => {
+    const data = await repository.getPlayerByIdRepository(id)
+    let response = null
+
+    if (data) {
+        response = await httpResponse.ok(data)
+    } else {
+        response = await httpResponse.noContent()
+    }
+
+    return response
+}
+
+export const setNewPlayerService = async (player: playerModel) => {
+    let response = null
+
+    if (Object.keys(player).length !== 0) {
+        await repository.setNewPlayerRepository(player)
+        response = await httpResponse.created()        
+    } else {
+        response = await httpResponse.badRequest()
     }
 
     return response

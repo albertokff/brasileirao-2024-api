@@ -1,4 +1,5 @@
 import { playerModel } from "../models/player-model";
+import { setNewPlayerService } from "../services/player-service";
 
 const database: playerModel[] = [
     {
@@ -143,6 +144,14 @@ const database: playerModel[] = [
     },
 ]
 
-export const getAllPlayers = async (): Promise<playerModel[]> => {
+export const getAllPlayersRepository = async (): Promise<playerModel[]> => {
     return database;
+}
+
+export const getPlayerByIdRepository = async(id: number): Promise<playerModel | undefined> => {
+    return database.find( player => player.id === id)
+}
+
+export const setNewPlayerRepository = async(player: playerModel) => {
+    return database.push(player)
 }
