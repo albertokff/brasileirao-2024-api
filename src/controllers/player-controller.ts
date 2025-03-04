@@ -23,3 +23,10 @@ export const deletePlayerById = async (req: Request, res: Response) => {
     const data = await service.deletePlayerByIdService(id)
     res.status(data.statusCode).json(data.body)
 }
+
+export const updatePlayerById = async (req: Request, res: Response) => {
+    const id = parseInt(req.params.id)
+    const body = req.body
+    const data = await service.updatePlayerByIdService(id, body)
+    res.status(data.statusCode).json(data.body)
+}

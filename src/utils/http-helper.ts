@@ -24,6 +24,8 @@ export const created = async(): Promise<httpResponse> => {
 export const badRequest = async(): Promise<httpResponse> => {
     return {
         statusCode: 400,
-        body: null
+        body: {
+            message: "Ocorreu um erro nessa requisição. Verifique os dados!"
+        }
     }
 }

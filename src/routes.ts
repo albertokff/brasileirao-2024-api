@@ -2,10 +2,10 @@ import { Router } from "express"
 import * as playerController from "./controllers/player-controller"
 
 const router = Router()
-
 router.get("/player", playerController.getAllPlayers)
 router.get("/player/:id", playerController.getPlayerById)
 router.post("/player", playerController.setNewPlayer)
 router.delete("/player/:id", playerController.deletePlayerById)
+router.patch("/player/:id", playerController.updatePlayerById)
 
 export default router

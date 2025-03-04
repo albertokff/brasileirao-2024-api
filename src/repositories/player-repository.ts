@@ -1,4 +1,5 @@
 import { playerModel } from "../models/player-model";
+import { atributos } from "../models/atributos-model";
 import { setNewPlayerService } from "../services/player-service";
 
 const database: playerModel[] = [
@@ -167,4 +168,17 @@ export const deletePlayerByIdRepository = async (id: number) => {
     }
 
     return false
+}
+
+export const updatePlayerByIdRepository = async (id: number, body: atributos) => {
+    const index = database.findIndex( player => player.id === id)
+
+    if (body) {
+        database[index].atributos = body
+        return {
+            message: "Atualizado com sucesso!"
+        }
+    } else {
+        return false
+    }
 }
